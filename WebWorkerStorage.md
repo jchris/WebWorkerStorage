@@ -66,10 +66,6 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
 Any website can create new WebWorkerStorage database. Simliar to the same-origin policy, a website can only access WebWorkerStorage databases belong to the same domain.
 
 
-## Privacy
-
-Websites can request permission to read other domain's databases. The user MUST be explicitly confirm or deny the request. Vendors MAY add limitations to a confirmed permission. For example "allow once", "allow for this session", "allow today", "allow forever".
-
 
 ## References
 
