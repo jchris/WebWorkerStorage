@@ -1,3 +1,13 @@
+# WebWorkerStorage
+
+This Document describes a simple storage API for web developers. The goal of the storage API is ease of use. It is targeted at modern web applications that need a simple, flexible and reliable in-browser storage solution.
+
+
+## Authors
+
+Jan Lehnardt, J Chris Anderson, Damien Katz
+
+
 ## Minimal API
   - Non-relational (no references between records)
   - No transaction API is exposed to JavaScript.
@@ -50,4 +60,20 @@
 ### Replication
 
 ## Web Worker Extensions
+
+## Security
+
+Any website can create new WebWorkerStorage database. Simliar to the same-origin policy, a website can only access WebWorkerStorage databases belong to the same domain.
+
+
+## Privacy
+
+Websites can request permission to read other domain's databases. The user MUST be explicitly confirm or deny the request. Vendors MAY add limitations to a confirmed permission. For example "allow once", "allow for this session", "allow today", "allow forever".
+
+
+## References
+
+[WW-message-passing]: http://www.whatwg.org/specs/web-workers/current-work/#handler-worker-onmessage
+
+
 
