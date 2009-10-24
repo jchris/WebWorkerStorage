@@ -75,12 +75,7 @@ Run through some API actions, including native JS features.
 
 ### It's Enumerable!
 
-for-in, `map()`, `reduce()` (js native), etc.
-
-    var key;
-    for (key in btree) {
-      alert(btree[key]);
-    }
+`map()`, `reduce()` (js native), etc.
 
 
 ## Example Use Cases
