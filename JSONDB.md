@@ -15,17 +15,16 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
     - rely on Web Workers for multi-process support 
     - (why implement something twice?)
 
+
 ## Motivation
-  To build the simplest useful data store for web developers. WebWorkerStorage is a key/value store, with range queries. This combines the simplicity of localStorage or cookies with the ability to create custom indexes that can be used for complex queries.
-  
+To build the simplest useful data store for web developers. WebWorkerStorage is a key/value store, with range queries. This combines the simplicity of localStorage or cookies with the ability to create custom indexes that can be used for complex queries.
+
+
 ## Storage
-  At the heart of WebWorkerStorage is a persistent key-value store which supports range-queries. Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
-  
-  The WebWorkerStorage API is designed to provide a solution that meets the needs for most web application development, with the minimum of implementation complexity.
+At the heart of WebWorkerStorage is a persistent key-value store which supports range-queries. Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
 
-### Keys and Values  
+The WebWorkerStorage API is designed to provide a solution that meets the needs for most web application development, with the minimum of implementation complexity.
 
-JSON blah from WebSimpleDB
 
 ### Storage Example
 
@@ -33,9 +32,10 @@ real world use case w/o web worker. in page.
 
 sortable todo list
 
+
 ### Storage API
 
-run through all the api actions, including native js features. js enumerable.
+Run through some API actions, including native JS features.
 
     var btree = new WebStorage("dbname");
     
@@ -72,9 +72,10 @@ run through all the api actions, including native js features. js enumerable.
     // delete a btree
     WebStore.drop("dbname");
 
+
 ### It's Enumerable!
 
-for-in, map, reduce (js native), blah
+for-in, `map()`, `reduce()` (js native), etc.
 
     var key;
     for (key in btree) {
@@ -84,6 +85,9 @@ for-in, map, reduce (js native), blah
 
 ## Example Use Cases
 
+Show some simple examples to demonstrate the JSONDB coolness.
+
+
 ### Web Worker MVCC & Validations
 
 revs for document updates.
@@ -92,15 +96,18 @@ sequence secondary index
 
 validation functions
 
+
 ### Incremental Indexing
 
 groups of map funs following seq index with back index
 
 reduce is at runtime
 
+
 ### Remote Replication
 
 maintain
+
 
 ## Web Worker Extensions
 
@@ -108,9 +115,10 @@ singleton web worker
 html rendering
 receive messages from other domains
 
+
 ## Security
 
-WebWorkerStorage databases are subjec to the same-origin policy, a page or worker can only access WebWorkerStorage databases belong to the same domain.
+WebWorkerStorage databases are subject to the same-origin policy, a page or worker can only access WebWorkerStorage databases belong to the same domain.
 
 
 
