@@ -1,4 +1,4 @@
-# WebWorkerStorage
+# JSONDB
 
 This Document describes a simple storage API for web developers. The goal of the storage API is ease of use. It is targeted at modern web applications that need a simple, flexible and reliable in-browser storage solution.
 
@@ -22,7 +22,10 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
   At the heart of WebWorkerStorage is a persistent key-value store which supports range-queries. Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
   
   The WebWorkerStorage API is designed to provide a solution that meets the needs for most web application development, with the minimum of implementation complexity.
-  
+
+### Keys and Values  
+
+JSON blah from WebSimpleDB
 
 ### Storage Example
 
