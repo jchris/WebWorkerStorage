@@ -12,7 +12,8 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
   - Non-relational (no references between records)
   - No transaction API is exposed to JavaScript.
   - Synchronous
-    - rely on Web Workers for multi-process support (why implement something twice?)
+    - rely on Web Workers for multi-process support 
+    - (why implement something twice?)
 
 ## Motivation
   To build the simplest useful data store for web developers. WebWorkerStorage is a key/value store, with range queries. This combines the simplicity of localStorage or cookies with the ability to create custom indexes that can be used for complex queries.
@@ -25,7 +26,13 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
 
 ### Storage Example
 
+real world use case w/o web worker. in page.
 
+sortable todo list
+
+### Storage API
+
+run through all the api actions, including native js features. js enumerable.
 
     var btree = new WebStorage("dbname");
     
@@ -33,37 +40,74 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
     
     btree.forEach(function(key, value) {
       // in order traversal
-    })
+    });
     
     btree.forEach(function(key, value) {
       // reverse order traversal
-    }, false)
+    }, {
+      "descending":true
+    });
     
-    btree.forEach("startkey", "endkey", function(key, value) {
-      // inorder traversal, starting from "startkey", ending with "endkey"
-      // use throw() to stop traversal
-    })
+    btree.forEach(function(key, value) {
+      // inorder traversal, 
+      // starting from "startkey", 
+      // ending with "endkey"
+      // you can use throw() to stop traversal
+    },{
+      "startkey":"a", 
+      "endkey":"z"
+    });
     
-    btree.forEach("endkey", function(key, value) {
-      // reverse order traversal, starting from "endkey"
-      // use throw() to stop traversal
-    }, false)
+    btree.forEach(function(key, value) {
+      // reverse order traversal, starting from "startkey"
+      // you can use throw() to stop traversal
+    },{
+      "startkey":"z",
+      "descending":true 
+    });
     
     // delete a btree
     WebStore.drop("dbname");
 
+### It's Enumerable!
 
-## Web Worker Example
+for-in, map, reduce (js native), blah
 
-### Map Reduce
+    var key;
+    for (key in btree) {
+      alert(btree[key]);
+    }
 
-### Replication
+
+## Example Use Cases
+
+### Web Worker MVCC & Validations
+
+revs for document updates.
+
+sequence secondary index
+
+validation functions
+
+### Incremental Indexing
+
+groups of map funs following seq index with back index
+
+reduce is at runtime
+
+### Remote Replication
+
+maintain
 
 ## Web Worker Extensions
 
+singleton web worker
+html rendering
+receive messages from other domains
+
 ## Security
 
-Any website can create new WebWorkerStorage database. Simliar to the same-origin policy, a website can only access WebWorkerStorage databases belong to the same domain.
+WebWorkerStorage databases are subjec to the same-origin policy, a page or worker can only access WebWorkerStorage databases belong to the same domain.
 
 
 
