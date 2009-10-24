@@ -3,6 +3,11 @@
 This Document describes a simple storage API for web developers. The goal of the storage API is ease of use. It is targeted at modern web applications that need a simple, flexible and reliable in-browser storage solution.
 
 
+## Version
+
+Pre-0.1
+
+
 ## Authors
 
 Jan Lehnardt, J Chris Anderson, Damien Katz
@@ -17,13 +22,14 @@ Jan Lehnardt, J Chris Anderson, Damien Katz
 
 
 ## Motivation
-To build the simplest useful data store for web developers. WebWorkerStorage is a key/value store, with range queries. This combines the simplicity of localStorage or cookies with the ability to create custom indexes that can be used for complex queries.
+To build the simplest useful data store for web developers. JSONDB is a key/value store, with range queries. This combines the simplicity of localStorage or cookies with the ability to create custom indexes that can be used for complex queries.
 
 
 ## Storage
-At the heart of WebWorkerStorage is a persistent key-value store which supports range-queries. Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
+  
+At the heart of JSONDB is a persistent key-value store which supports range-queries. Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
 
-The WebWorkerStorage API is designed to provide a solution that meets the needs for most web application development, with the minimum of implementation complexity.
+The JSONDB API is designed to provide a solution that meets the needs for most web application development, with the minimum of implementation complexity.
 
 
 ### Storage Example
@@ -37,21 +43,21 @@ sortable todo list
 
 Run through some API actions, including native JS features.
 
-    var btree = new WebStorage("dbname");
+    var jsondb = new JSONDB("dbname");
     
-    btree["some_key"] = {"some":"json"};
+    jsondb["some_key"] = {"some":"json"};
     
-    btree.forEach(function(key, value) {
+    jsondb.forEach(function(key, value) {
       // in order traversal
     });
     
-    btree.forEach(function(key, value) {
+    jsondb.forEach(function(key, value) {
       // reverse order traversal
     }, {
       "descending":true
     });
     
-    btree.forEach(function(key, value) {
+    jsondb.forEach(function(key, value) {
       // inorder traversal, 
       // starting from "startkey", 
       // ending with "endkey"
@@ -61,7 +67,7 @@ Run through some API actions, including native JS features.
       "endkey":"z"
     });
     
-    btree.forEach(function(key, value) {
+    jsondb.forEach(function(key, value) {
       // reverse order traversal, starting from "startkey"
       // you can use throw() to stop traversal
     },{
@@ -70,7 +76,7 @@ Run through some API actions, including native JS features.
     });
     
     // delete a btree
-    WebStore.drop("dbname");
+    JSONDB.drop("dbname");
 
 
 ### It's Enumerable!
@@ -113,7 +119,7 @@ receive messages from other domains
 
 ## Security
 
-WebWorkerStorage databases are subject to the same-origin policy, a page or worker can only access WebWorkerStorage databases belong to the same domain.
+JSONDB databases are subject to the same-origin policy, a page or worker can only access JSONDB databases belong to the same domain.
 
 
 
