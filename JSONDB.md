@@ -79,9 +79,26 @@ Run through some API actions, including native JS features.
     JSONDB.drop("dbname");
 
 
-### It's Enumerable!
+#### It's (sorta) Enumerable!
 
-`map()`, `reduce()` (js native), etc.
+    // multiply by 7
+    // map returns a new JSONDB based on the mapped return values
+    // the original JSONDB instance is not altered
+    jsondb.map(function(key, value) {
+      return value * 7;
+    });
+    
+    // count stuff, initialize sum with 0
+    // iterates over the database on read time doing a "full table scan"
+    var total = jsondb.reduce(function(key, value, acc) {
+      return acc + value;
+    }, 0);
+
+
+#### Database Properties
+
+    jsondb.name; // "dbname" (database name)
+    jsondb.length // 3 (number of elements)
 
 
 ## Example Use Cases
@@ -126,6 +143,4 @@ JSONDB databases are subject to the same-origin policy, a page or worker can onl
 ## References
 
 [WW-message-passing]: http://www.whatwg.org/specs/web-workers/current-work/#handler-worker-onmessage
-
-
 
