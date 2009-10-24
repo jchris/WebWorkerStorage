@@ -144,3 +144,9 @@ JSONDB databases are subject to the same-origin policy, a page or worker can onl
 
 [WW-message-passing]: http://www.whatwg.org/specs/web-workers/current-work/#handler-worker-onmessage
 
+*
+
+## TODO:
+ - Discuss
+  - Can keys be more than strings? ( `db[{"a":1}] = 77`)
+  
