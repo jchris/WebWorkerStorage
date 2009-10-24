@@ -13,16 +13,22 @@ Pre-0.1
 Jan Lehnardt, J Chris Anderson, Damien Katz
 
 
-## Minimal API
-  - Non-relational (no references between records)
-  - No transaction API is exposed to JavaScript.
-  - Synchronous
-    - rely on Web Workers for multi-process support 
-    - (why implement something twice?)
-
-
 ## Motivation
+
 To build the simplest useful data store for web developers. JSONDB is a key/value store, with range queries. This combines the simplicity of localStorage or cookies with the ability to create custom indexes that can be used for complex queries.
+
+
+## Minimal API
+
+The API described in this document is meant to be the base for more elaborate storage solutions. It aims to only include features that are required to build larger, more complex storage solutions and no more.
+
+JSONDB is a non-relational database. There are no tables, no SQL or SQL-like query language. No object relational mapper (ORM) is required to use JSONDB.
+
+The API is a pure JavaScript API that runs within a page's context in the browser (and in non-browser JavaScript environments).
+
+JSONDB does not support transactions. Each operation is atomic.
+
+The core API is synchronous. If wrapped in a [WebWorker][WebWorkers] and using [WebWorkers Message Passing][WW-message-passing] JSONDB supports asynchronous, concurrent access through a lockless MVCC API.
 
 
 ## Storage
@@ -142,6 +148,7 @@ JSONDB databases are subject to the same-origin policy, a page or worker can onl
 
 ## References
 
+[WebWorkers]:  http://www.whatwg.org/specs/web-workers/
 [WW-message-passing]: http://www.whatwg.org/specs/web-workers/current-work/#handler-worker-onmessage
 
 *
