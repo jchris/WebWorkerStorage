@@ -30,12 +30,16 @@ JSONDB does not support transactions. Each operation is atomic.
 
 The core API is synchronous. If wrapped in a [WebWorker][WebWorkers] and using [WebWorkers Message Passing][WW-message-passing] JSONDB supports asynchronous, concurrent access through a lockless MVCC API.
 
+_We are happy to add an asynchronous component to this document. Patches are welcome._
 
 ## Storage
   
-At the heart of JSONDB is a persistent key-value store which supports range-queries. Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
+At the heart of JSONDB is a persistent key-value store which supports range-queries across the sorted keys, as well as across secondary indexes on the values.
+
+Traditionally this is implemented with a B-Tree or similar data structure although the spec doesn't care what's under the covers.
 
 The JSONDB API is designed to provide a solution that meets the needs for most web application development, with the minimum of implementation complexity.
+
 
 
 ### Storage Example
